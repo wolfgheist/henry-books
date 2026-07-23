@@ -10,20 +10,20 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker compose -f docker-compose-deploy.yml build'
+                bat 'docker compose -f docker-compose-deploy.yml build'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker compose -f docker-compose-deploy.yml up -d'
+                bat 'docker compose -f docker-compose-deploy.yml up -d'
             }
         }
     }
 
     post {
         always {
-            sh 'docker compose -f docker-compose-deploy.yml ps'
+            bat 'docker compose -f docker-compose-deploy.yml ps'
         }
     }
 }
