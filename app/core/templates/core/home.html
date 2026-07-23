@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+{% block title %}Henry Bookstore{% endblock %}
+
+{% block content %}
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <h1 class="display-5 fw-bold">Henry Bookstore Inventory Management System</h1>
+    <p class="col-md-8 fs-5">
+      Browse our books and store locations. Manage inventory across all Henry Books branches.
+    </p>
+    <a class="btn btn-primary btn-lg me-2" href="{% url 'book_list' %}">Browse Books</a>
+    <a class="btn btn-outline-secondary btn-lg" href="{% url 'branch_list' %}">View Branches</a>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ book_count }} Books</h5>
+          <p class="card-text">Explore the full catalog, including author, price, and description.</p>
+          <a href="{% url 'book_list' %}" class="btn btn-sm btn-primary">View Books</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ branch_count }} Branches</h5>
+          <p class="card-text">See every branch location and check what's in stock there.</p>
+          <a href="{% url 'branch_list' %}" class="btn btn-sm btn-primary">View Branches</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

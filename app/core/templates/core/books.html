@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+{% block title %}Books - Henry Bookstore{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">Books</h2>
+
+  {% if books %}
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in books %}
+            <tr>
+              <td>{{ book.title }}</td>
+              <td>{{ book.author }}</td>
+              <td>${{ book.price }}</td>
+              <td>{{ book.description|truncatewords:20 }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p class="text-muted">No books have been added yet.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "core/base.html" %}
+{% block title %}Branches - Henry Bookstore{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">Branches</h2>
+
+  {% if branches %}
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Branch</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for branch in branches %}
+            <tr>
+              <td>{{ branch.branch_name }}</td>
+              <td>{{ branch.address }}</td>
+              <td>{{ branch.city }}</td>
+              <td>{{ branch.state }}</td>
+              <td>{{ branch.zip }}</td>
+              <td>{{ branch.phone }}</td>
+              <td>
+                <a href="{% url 'branch_inventory' branch.pk %}" class="btn btn-sm btn-outline-primary">
+                  View Inventory
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p class="text-muted">No branches have been added yet.</p>
+  {% endif %}
+{% endblock %}
